@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import HeroSection from "@/components/HeroSection";
 import StorylineSection from "@/components/StorylineSection";
 import TimelineSection from "@/components/TimelineSection";
@@ -22,6 +23,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Sticky Back Button */}
+      <a
+        href="https://intemstellar-nu.vercel.app/"
+        className="fixed top-4 left-4 z-50"
+      >
+        <Button
+          variant="outline"
+          size="sm"
+          className="font-orbitron bg-background/80 backdrop-blur-sm hover:bg-background/90"
+        >
+          Back
+        </Button>
+      </a>
+      
       <HeroSection />
       <StorylineSection />
       
