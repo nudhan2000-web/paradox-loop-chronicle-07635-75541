@@ -4,7 +4,6 @@ import HeroSection from "@/components/HeroSection";
 import StorylineSection from "@/components/StorylineSection";
 import TimelineSection from "@/components/TimelineSection";
 import RulesSection from "@/components/RulesSection";
-import ReportSection from "@/components/ReportSection";
 import CoordinatorsSection from "@/components/CoordinatorsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionDivider from "@/components/SectionDivider";
@@ -36,6 +35,20 @@ const Index = () => {
           Back
         </Button>
       </a>
+
+      {/* Sticky Register Button */}
+      <a
+        href="#"
+        className="fixed top-4 right-4 z-50"
+      >
+        <Button
+          variant="default"
+          size="sm"
+          className="font-orbitron"
+        >
+          Register
+        </Button>
+      </a>
       
       <HeroSection />
       <StorylineSection />
@@ -47,7 +60,6 @@ const Index = () => {
       <SectionDivider imageSrc={divider2} alt="Time mechanism divider" />
       
       <RulesSection />
-      <ReportSection />
       
       <SectionDivider imageSrc={divider3} alt="Holographic interface divider" />
       
