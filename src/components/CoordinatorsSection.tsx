@@ -4,17 +4,14 @@ import graveyard from "@/assets/graveyard.jpg";
 const coordinators = [
   {
     name: "Varshini Elumalai Palani",
-    year: "2nd Year",
     phone: "86678 01807",
   },
   {
     name: "Harsha Nandhini K",
-    year: "2nd Year",
     phone: "98403 35963",
   },
   {
     name: "Surya A",
-    year: "3rd Year",
     phone: "79044 61620",
   },
 ];
@@ -55,12 +52,9 @@ const CoordinatorsSection = () => {
 
               {/* Content */}
               <div className="relative z-10">
-                <h3 className="font-orbitron text-lg sm:text-xl font-bold mb-2 text-primary transition-all">
+                <h3 className="font-orbitron text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-primary transition-all">
                   {coordinator.name}
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
-                  {coordinator.year}
-                </p>
 
                 <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 bg-muted/30 rounded-lg border border-border group-hover:border-primary/30 transition-all">
                   <Phone className="w-4 h-4 text-primary flex-shrink-0" />
