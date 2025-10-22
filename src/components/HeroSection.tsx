@@ -3,13 +3,13 @@ import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const scrollToContent = () => {
-    document.getElementById("storyline")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("problem-statements")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
@@ -39,7 +39,7 @@ const HeroSection = () => {
           <br />
           PROTOCOL
         </h1>
-        
+
         <p className="font-inter text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6 sm:mb-8 text-muted-foreground px-4">
           Reimagine. Rebuild.{" "}
           <span className="text-primary animate-glitch inline-block">
@@ -54,7 +54,7 @@ const HeroSection = () => {
           size="lg"
           className="font-orbitron text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300 hover:scale-105"
         >
-          ENTER THE LOOP
+          PROBLEM STATEMENTS
         </Button>
       </div>
     </section>
