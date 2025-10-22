@@ -1,4 +1,5 @@
-import { Code2, Scale, Shield, Stethoscope, Accessibility } from "lucide-react";
+import { useState } from "react";
+import { Code2, Scale, Shield, Stethoscope, Accessibility, ChevronDown } from "lucide-react";
 
 const problems = [
   {
@@ -34,6 +35,16 @@ const problems = [
 ];
 
 const ProblemStatementsSection = () => {
+  const [expandedProblems, setExpandedProblems] = useState<string[]>([]);
+
+  const toggleProblem = (code: string) => {
+    setExpandedProblems(prev =>
+      prev.includes(code)
+        ? prev.filter(p => p !== code)
+        : [...prev, code]
+    );
+  };
+
   return (
     <section id="problem-statements" className="relative py-12 sm:py-16 md:py-24 px-4 bg-gradient-to-b from-muted/10 to-background">
       <div className="max-w-6xl mx-auto">
@@ -48,13 +59,18 @@ const ProblemStatementsSection = () => {
         <div className="space-y-6 sm:space-y-8">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
+            const isExpanded = expandedProblems.includes(problem.code);
+
             return (
               <div
                 key={problem.code}
                 className="group relative animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="bg-card border border-border hover:border-primary/50 rounded-lg p-4 sm:p-6 md:p-8 transition-all duration-300">
+                <button
+                  onClick={() => toggleProblem(problem.code)}
+                  className="w-full bg-card border border-border hover:border-primary/50 rounded-lg p-4 sm:p-6 md:p-8 transition-all duration-300 text-left"
+                >
                   <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                     <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center transition-all duration-300">
                       <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
@@ -67,20 +83,33 @@ const ProblemStatementsSection = () => {
                         </span>
                       </div>
 
-                      <h3 className="font-orbitron text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 text-foreground">
+                      <h3 className="font-orbitron text-lg sm:text-xl md:text-2xl font-bold text-foreground">
                         {problem.title}
                       </h3>
 
-                      <p className="font-inter text-sm sm:text-base text-foreground/80 leading-relaxed">
-                        {problem.description}
-                      </p>
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isExpanded ? "max-h-96 mt-2 sm:mt-3" : "max-h-0"
+                        }`}
+                      >
+                        <p className="font-inter text-sm sm:text-base text-foreground/80 leading-relaxed">
+                          {problem.description}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="hidden lg:block font-orbitron text-4xl xl:text-5xl font-black text-muted/10 group-hover:text-muted/20 transition-colors">
-                      {problem.code}
+                    <div className="flex items-center gap-2 sm:gap-4">
+                      <div className="hidden lg:block font-orbitron text-4xl xl:text-5xl font-black text-muted/10 group-hover:text-muted/20 transition-colors">
+                        {problem.code}
+                      </div>
+                      <ChevronDown
+                        className={`w-5 h-5 sm:w-6 sm:h-6 text-primary transition-transform duration-300 ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
                     </div>
                   </div>
-                </div>
+                </button>
 
                 {index < problems.length - 1 && (
                   <div className="absolute left-6 sm:left-8 top-full h-6 sm:h-8 w-px bg-gradient-to-b from-border to-transparent" />
